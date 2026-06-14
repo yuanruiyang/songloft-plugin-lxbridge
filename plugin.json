@@ -1,0 +1,19 @@
+{
+  "$schema": "https://raw.githubusercontent.com/songloft-org/plugin-toolchain/main/schemas/plugin.schema.json",
+  "name": "LXServer 桥接",
+  "version": "1.0.0",
+  "description": "桥接 lxserver 多平台音乐搜索服务（酷狗/酷我/QQ/网易/咪咕）",
+  "author": "Songloft Team",
+  "homepage": "https://github.com/yuanruiyang/songloft-plugin-lxbridge",
+  "license": "Apache-2.0",
+  "entryPath": "lxbridge",
+  "main": "main.js",
+  "minHostVersion": "1.3.0",
+  "permissions": [
+    "storage"
+  ],
+  "updateUrl": "https://raw.githubusercontent.com/yuanruiyang/songloft-plugin-lxbridge/main/plugin.json",
+  "download_url": "https://github.com/yuanruiyang/songloft-plugin-lxbridge/releases/download/v1.0.0/lxbridge.jsplugin.zip",
+  "entryHash": "",
+  "zipHash": ""
+}
