@@ -32,7 +32,8 @@ async function createClient(): Promise<LxserverClient> {
 router.post('/api/search', createSearchHandler({
   search: async (keyword, page, pageSize) => {
     const client = await createClient()
-    const results = await client.search(keyword, page || 1, pageSize || 5)
+    const config = await getConfig()
+    const results = await client.search(keyword, page || 1, pageSize || 5, config.defaultPlatform)
     return results.map(toSearchResultItem)
   }
 }))
@@ -88,7 +89,7 @@ router.post('/api/miot/search', async (req: HTTPRequest) => {
     const client = new LxserverClient(config.lxserverUrl, config.lxserverToken, config.lxserverUsername)
 
     // 搜索 lxserver（limit 5，取第一条）
-    const results = await client.search(keyword, 1, 5)
+    const results = await client.search(keyword, 1, 5, config.defaultPlatform)
     if (results.length === 0) {
       return jsonResponse(miotError(404, 'No results found'))
     }
@@ -139,7 +140,8 @@ router.post('/api/config', async (req: HTTPRequest) => {
     lxserverUrl: (data.lxserverUrl as string) || current.lxserverUrl,
     lxserverToken: (data.lxserverToken as string) || current.lxserverToken,
     lxserverUsername: (data.lxserverUsername as string) || current.lxserverUsername,
-    defaultQuality: (data.defaultQuality as string) || current.defaultQuality
+    defaultQuality: (data.defaultQuality as string) || current.defaultQuality,
+    defaultPlatform: (data.defaultPlatform as string) || current.defaultPlatform
   }
 
   await saveConfig(updated)
