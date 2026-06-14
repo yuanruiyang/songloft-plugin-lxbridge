@@ -1,0 +1,237 @@
+/* CSS variables, reset, body and font provided by host common.css */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--md-surface);
+  color: var(--md-on-surface);
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  min-height: 100vh;
+}
+
+/* AppBar */
+.app-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 56px;
+  background: var(--md-primary);
+  color: var(--md-on-primary);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 16px;
+  z-index: 100;
+  box-shadow: var(--md-shadow-2);
+}
+
+.app-bar h1 {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+/* Main content */
+.content {
+  padding-top: 72px;
+  padding-bottom: 32px;
+}
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+/* Card */
+.card {
+  background: var(--md-surface);
+  border-radius: var(--md-radius-lg);
+  box-shadow: var(--md-shadow-1);
+  padding: 20px;
+  margin-bottom: 16px;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.card-title {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--md-on-surface);
+}
+
+/* Status */
+.status-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 0;
+}
+
+.status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--md-outline);
+  flex-shrink: 0;
+}
+
+.status-dot.connected {
+  background: var(--md-success, #4caf50);
+  box-shadow: 0 0 6px var(--md-success, #4caf50);
+}
+
+.status-dot.disconnected {
+  background: var(--md-error);
+}
+
+#statusText {
+  font-size: 14px;
+  color: var(--md-on-surface-variant);
+}
+
+/* Form fields */
+.field-group {
+  margin-bottom: 16px;
+}
+
+.field-group label {
+  display: block;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--md-on-surface-variant);
+  margin-bottom: 6px;
+}
+
+.text-field {
+  width: 100%;
+  padding: 12px 14px;
+  font-size: 14px;
+  color: var(--md-on-surface);
+  background: var(--md-surface-1);
+  border: 1.5px solid var(--md-outline-variant);
+  border-radius: var(--md-radius-sm);
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.text-field:focus {
+  border-color: var(--md-primary);
+}
+
+.text-field::placeholder {
+  color: var(--md-outline);
+}
+
+select.text-field {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24'%3E%3Cpath fill='%23666' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  padding-right: 36px;
+}
+
+/* Buttons */
+.btn-filled {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 24px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--md-on-primary);
+  background: var(--md-primary);
+  border: none;
+  border-radius: var(--md-radius-full);
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.btn-filled:hover {
+  opacity: 0.9;
+}
+
+.btn-filled:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--md-on-surface-variant);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-icon:hover {
+  background: var(--md-surface-2);
+}
+
+.btn-icon .material-symbols-outlined {
+  font-size: 20px;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+/* Snackbar */
+.snackbar {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  background: var(--md-on-surface);
+  color: var(--md-surface);
+  padding: 12px 24px;
+  border-radius: var(--md-radius-sm);
+  font-size: 14px;
+  box-shadow: var(--md-shadow-2);
+  opacity: 0;
+  transition: transform 0.3s, opacity 0.3s;
+  z-index: 200;
+  white-space: nowrap;
+}
+
+.snackbar.show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
+/* Desktop: nav rail */
+@media (min-width: 1024px) {
+  .app-bar {
+    left: 0;
+  }
+  .container {
+    max-width: 640px;
+  }
+}
+
+/* Embed mode (in-app tab) */
+html.embed .app-bar {
+  display: none !important;
+}
+
+html.embed .content {
+  padding-top: 16px;
+}
