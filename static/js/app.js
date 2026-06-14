@@ -5,6 +5,7 @@ const elUrl = document.getElementById('lxserverUrl');
 const elToken = document.getElementById('lxserverToken');
 const elUsername = document.getElementById('lxserverUsername');
 const elQuality = document.getElementById('defaultQuality');
+const elPlatform = document.getElementById('defaultPlatform');
 const elStatusDot = document.getElementById('statusDot');
 const elStatusText = document.getElementById('statusText');
 const elBtnSave = document.getElementById('btnSave');
@@ -21,6 +22,7 @@ async function loadConfig() {
         elToken.placeholder = config.lxserverToken ? '已配置（留空保持不变）' : '可选';
         elUsername.value = config.lxserverUsername || '';
         elQuality.value = config.defaultQuality || '320k';
+        elPlatform.value = config.defaultPlatform || 'all';
     } catch (e) {
         showSnackbar('加载配置失败');
         console.error('loadConfig error:', e);
@@ -59,6 +61,7 @@ async function saveConfig() {
         lxserverUrl: elUrl.value.trim(),
         lxserverUsername: elUsername.value.trim(),
         defaultQuality: elQuality.value,
+        defaultPlatform: elPlatform.value,
     };
 
     // Only send token if user entered a new one
