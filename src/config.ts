@@ -3,6 +3,7 @@ export interface LxBridgeConfig {
   lxserverToken: string
   lxserverUsername: string
   defaultQuality: string
+  defaultPlatform: string   // 'all' | 'kg' | 'kw' | 'tx' | 'wy' | 'mg'
 }
 
 const CONFIG_KEY = 'lxbridge_config'
@@ -11,7 +12,8 @@ const DEFAULT_CONFIG: LxBridgeConfig = {
   lxserverUrl: 'http://localhost:9527',
   lxserverToken: '',
   lxserverUsername: '',
-  defaultQuality: '320k'
+  defaultQuality: '320k',
+  defaultPlatform: 'all'
 }
 
 export async function getConfig(): Promise<LxBridgeConfig> {
