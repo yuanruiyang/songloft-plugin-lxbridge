@@ -4,12 +4,13 @@ export interface LxserverSearchResult {
   name: string
   singer: string
   source: string          // kg, kw, tx, wy, mg
-  songmid?: string
+  songmid?: string | number
+  hash?: string           // kg 专用：歌曲 hash，定位播放 URL 必需
   albumName?: string
   albumId?: string
   interval?: string       // "03:45"
   img?: string
-  types?: Array<{ type: string; size: string }>
+  types?: Array<{ type: string; size: string; hash?: string }>
   lrc?: string | null
 }
 
@@ -42,7 +43,7 @@ export class LxserverClient {
 
   /** 获取播放 URL */
   async getPlayUrl(
-    songInfo: { name: string; singer: string; source: string; songmid?: string; types?: unknown[] },
+    songInfo: { name: string; singer: string; source: string; songmid?: string | number; hash?: string; types?: unknown[] },
     quality: string
   ): Promise<string | null> {
     const resp = await fetch(`${this.baseUrl}/api/music/url`, {
