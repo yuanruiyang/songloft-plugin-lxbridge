@@ -546,6 +546,25 @@ select.text-field {
   color: var(--md-on-surface);
 }
 
+.about-value-mono {
+  font-family: 'Cascadia Code', 'Fira Code', 'Consolas', monospace;
+  font-size: 11px;
+  font-weight: 400;
+  cursor: pointer;
+  padding: 2px 8px;
+  border-radius: 6px;
+  background: var(--md-surface-1);
+  transition: background 0.2s ease;
+  max-width: 70%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.about-value-mono:hover {
+  background: var(--md-surface-2);
+}
+
 .about-divider {
   height: 1px;
   background: var(--md-outline-variant);
